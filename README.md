@@ -7,4 +7,4 @@ This app can be run locally by using cding into the 'estimator-lab-adv' director
   $ docker run -p 80:80 est-tweet
 
 However, it has also been deployed to an AWS free-tier server and can be accessed at the following url:
-  https://tweet-service.ccva4084875lu.us-east-1.cs.amazonlightsail.com/
+  http://54.92.174.201/test
