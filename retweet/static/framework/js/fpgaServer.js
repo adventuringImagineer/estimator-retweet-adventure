@@ -146,7 +146,7 @@ class fpgaServer {
             this.reconnect_time = new Date().getTime();
           }
           console.log("WebSocket closed. Attempting to reconnect. Traffic may have been dropped.");
-          alert("WebSocket closed. Page will be refreshed automagically.");
+          alert("WebSocket closed. Page will be refreshed automatically.");
           window.location.reload()
           setTimeout(
             () => {this.connectURL(this.url, this.connect_cb, true);},

@@ -101,9 +101,9 @@
             <div class="TweetAuthor"><a class="TweetAuthor-link" href="#channel"> </a><span class="TweetAuthor-avatar">
                 <div class="Avatar"> </div>
               </span><span class="TweetAuthor-name">
-                <p id="name">TwitterDev</p>
+                <p id="name">adventuringImagineer</p>
               </span><span class="Icon Icon--verified"> </span><span class="TweetAuthor-screenName"><label
-                  id="username">@TwitterDev</label> </span></div>
+                  id="username">@adventuringImagineer</label> </span></div>
           </div>
           <div class="timeline-Tweet-text">
             <p id="text">This App will show you 20 individual tweets and the AI will predict if each of the tweets has been
@@ -130,8 +130,8 @@
                     document.getElementById("username").innerHTML = "@" + username[i];
                     i++;
                   } else {
-                    document.getElementById("name").innerHTML = "imagineer_that!"
-                    document.getElementById("username").innerHTML = "@imagineer_that!"
+                    document.getElementById("name").innerHTML = "adventuringImagineer"
+                    document.getElementById("username").innerHTML = "@adventuringImagineer"
                     document.getElementById("text").innerHTML = "You have reached the end of the line of tweets. Please refresh page to see more."
                     document.getElementById("prediction-message").innerHTML = "Thank you for visiting!!"
                   }
@@ -180,7 +180,7 @@
         });
       });}
       catch (err) {
-        alert("The program did not load properly, page will be refreshed automagically. See console log for possible error messages");
+        alert("The program did not load properly, page will be refreshed automatically. See console log for possible error messages");
         location.reload()
         console.log('Error on load: ', err)
       }
