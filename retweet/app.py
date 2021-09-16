@@ -5,13 +5,13 @@ import json
 import retweet.tweet_ex as tweet_ex
 from retweet import create_app
 
-# app = Flask(__name__, template_folder='templates')
-# app = Flask(__name__, template_folder="templates",
-#         static_folder="static")
 app = create_app()
+
 # Creating the API object while passing in auth information
-auth = tweepy.AppAuthHandler(
-    config.tweepy_consumer_key, config.tweepy_consumer_secret)
+auth = tweepy.OAuthHandler(config.tweepy_consumer_key, config.tweepy_consumer_secret)
+
+# # Setting your access token and secret
+auth.set_access_token(config.tweepy_access_token, config.tweepy_access_token_secret)
 
 api = tweepy.API(auth, wait_on_rate_limit=True)
 # status = api.get_status(tweet_mode="extended")
