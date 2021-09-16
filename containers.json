@@ -1,8 +1,0 @@
-{
-    "flask": {
-        "image": ":tweet-service.est-tweet.6",
-        "ports": {
-            "5000": "HTTP"
-        }
-    }
-}
