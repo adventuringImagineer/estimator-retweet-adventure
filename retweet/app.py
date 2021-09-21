@@ -97,8 +97,10 @@ def get_tweet_info(searched_tweets):
 
 def quantify_data(data):
     data = ((data - 0) / (MAX_FOLLOWER_COUNT - 0) * (255 - 0) + 0)
-    if (data > 255):
-        data = 255
+    if (data <= 128):
+        data = 0
+    else:
+        data = 1
     return data
 
 ##
@@ -114,15 +116,15 @@ def quantify_data(data):
 def normalized_user_data(user):
     user_data = []
     for i in user:
+        # est3 = quantify_data(255 if i['verified'] else 0)
+        # est2 = quantify_data(255 if (i['friends_count'] < i['followers_count']) else 0)
+        # est1 = quantify_data(i['followers_count'])
+        # print('followers_count: ', i['followers_count'], ': friends_count: ', i['friends_count'], ': verified:', i['verified'])
         est = ((quantify_data(i['followers_count']) + (255 if (i['friends_count']
                < i['followers_count']) else 0) + (255 if i['verified'] else 0))/3)
-        if (est <= 85):
-            est = 0
-        elif (est > 85 and est <= 128):
-            est = 1
-        else:
-            est = 2
-        user_data.append(est)
+        user_data.append(1 if est > 128 else 0)
+        # user_data.append([est1, est2, est3])
+
     return user_data
 
 
@@ -142,7 +144,7 @@ def test():
         screennames.append(screenname.decode())
 
     for i in searched_tweets:
-        retweeted.append(i['retweet_count'])
+        retweeted.append(1 if i['retweet_count'] > 0 else 0)
 
     return render_template('retweet.html', payload=payload, retweeted=retweeted, text=text, screenname=screennames, name=names, url=config.estimator_url)
 

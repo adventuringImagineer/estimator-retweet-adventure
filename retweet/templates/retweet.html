@@ -1,69 +1,129 @@
 <!DOCTYPE html>
-<!-- Copyright ©, Inc. Confidential and proprietary. Patents issued and pending. All rights reserved. -->
-<html lang="en">
-
+<html lang="en" >
 <head>
+  <meta charset="UTF-8">
   <title>ReTweet Prediction App - EstimatorLab</title>
-  <meta charset="utf-8">
-  <!-- Required meta tags -->
   <link rel="shortcut icon" href="static/public/tweet.png">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="shortcut icon" href="static/public/tweet.png">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
     integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css"> -->
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
 
-  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="static/css/styles.css">
-
-
+  <link rel="stylesheet" href="static/css/new_style.css">
   <script src="static/framework/js/fpgaServer.js"></script>
   <script src="static/js/estimator.js"></script>
   <script src="static/js/prediction.js"></script>
   <script src="static/js/retweet.js"></script>
-  <link rel="stylesheet" type="text/css" href="static/css/rps.css">
 
-  <!-- Popup message initial load -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.8.2.js"></script>
-  <title>Twitter Prediction App</title>
+
 </head>
-
 <body>
-  <!-- wrapper to always be within the viewport -->
-  <div class="wrapper">
-    <!-- Navbar section -->
-    <!-- canvas.js chart section -->
-    <row>
-    <div class="two">
-      <div>
-        <!-- <p>Copyright © ThroughPuter, Inc. Patents issued and pending. All rights reserved. Contact: <a href="tech@throughputer.com">tech@throughputer.com</a></p> -->
-        <h2 style="text-align: center;">Twitter Prediction Demo</h2>
-      </div>
-      <h4 id="info" style="padding-top: 1rem; text-align: center; color: rgb(16, 71, 71);"> Click the "Next Tweet"
+<!-- partial:index.partial.html -->
+<div class="container">
+    <div class="div1">
+      <div class="Title"><h2>Twitter Prediction Demo</h2>
+            <h4 id="info"> Click the "Next Tweet"
         button below the tweet to visualize AI predictions</h4>
-      <div id="linegraph" style="padding-top: 1rem; padding-bottom: 3rem; width: 50%; float:left; display: none;">
-        <canvas id="line-chart" height="70%"> </canvas>
       </div>
 
-      <div id="piegraph" style="padding-top: 1rem; padding-bottom: 3rem; width: 50%; float:right; display: none;">
-        <canvas id="pie-chart" height="70%"></canvas>
+    <div class="Line-Graph">
+      <div id="linegraph">
+        <canvas id="line-chart" height="85%"> </canvas>
+      </div></div>
+    <div class="Pie-Graph">
+      <div id="piegraph">
+        <canvas id="pie-chart" height="85%"></canvas>
       </div>
     </div>
-  </row>
-    <!-- hand click & score section -->
-    <row>
+  </div>
+  <div class="Tweet">
+    <!-- partial:index.partial.html -->
+    <div class="tw-block-parent center">
+        <div class="timeline-TweetList-tweet">
+            <div class="timeline-Tweet">
+                <div class="timeline-Tweet-brand">
+                    <div class="Icon Icon--twitter"></div>
+                </div>
+                <div class="timeline-Tweet-author">
+                    <div class="TweetAuthor">
+                        <a class="TweetAuthor-link" href="#channel"> </a>
+                        <span class="TweetAuthor-avatar"></span>
+                        <span class="TweetAuthor-name">
+                            <label id="name">adventuringImagineer</label>
+                        </span>
+                        <span class="Icon Icon--verified"></span>
+                        <span class="TweetAuthor-screenName">
+                            <label id="username">@adventuringImagineer</label> 
+                        </span>
+                     </div>
+                </div>
+                <div class="timeline-Tweet-text">
+                  <p id="text">
+                    This App will show you 20 individual tweets and the AI will predict 
+                    if each of the tweets has been retweeted or not.<br>
+                    Above this tweet box it will print whether the AI predicted correctly.
+                    <br> and if the tweet was retweeted or not.
+                    <br>Please press "Next Tweet" to begin:)
+                 </p>
+            <script>
+              let retweetObj = '{{ retweeted|tojson }}';
+              retweetObj = JSON.parse(retweetObj);
+              let textObj = '{{ text|tojson|safe }}';
+              textObj = textObj.split('", "')
+              let username = '{{screenname|tojson}}'
+              username = JSON.parse(username);
+              let name = '{{name|tojson}}'
+              name = JSON.parse(name);
+              let i = 0
+              $(document).ready(function () {
+                $("#tweet").click(function () {
+                  if (textObj.length != i) {
+                    document.getElementById("text").innerHTML = textObj[i];
+                    document.getElementById("name").innerHTML = name[i];
+                    document.getElementById("username").innerHTML = "@" + username[i];
+                    i++;
+                  } else {
+                    document.getElementById("name").innerHTML = "adventuringImagineer"
+                    document.getElementById("username").innerHTML = "@adventuringImagineer"
+                    document.getElementById("text").innerHTML = "You have reached the end of the line of tweets. Please refresh page to see more."
+                    document.getElementById("prediction-message").innerHTML = "Thank you for visiting!!"
+                  }
+                });
+              });
+            </script>
+                </div>
+
+                <div class="timeline-Tweet-metadata">
+                    <span class="timeline-Tweet-timestamp">9h</span>
+                </div>
+                <div class="player">
+                    <div class="row">
+                    <button id="tweet" class="btn hand-selected-img hand-container">
+                        Next Tweet
+                    </button>
+                </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <!-- partial -->
+  </div> <!--Ends Tweet Div-->
+
+  <div class="div3">
+    <div class="PredictionResults">
+          <!-- hand click & score section -->
     <div class="three">
       <div id="body">
         <div id="instructions" style="overflow: hidden;">
@@ -93,107 +153,58 @@
         </div>
       </div>
     </div>
-  </row>
-    <!-- partial:index.partial.html -->
-    <div class="tw-block-parent center">
-      <div class="timeline-TweetList-tweet">
-        <div class="timeline-Tweet">
-          <div class="timeline-Tweet-brand">
-            <div class="Icon Icon--twitter"></div>
-          </div>
-          <div class="timeline-Tweet-author">
-            <div class="TweetAuthor"><a class="TweetAuthor-link" href="#channel"> </a><span class="TweetAuthor-avatar">
-                <div class="Avatar"> </div>
-              </span><span class="TweetAuthor-name">
-                <p id="name">adventuringImagineer</p>
-              </span><span class="Icon Icon--verified"> </span><span class="TweetAuthor-screenName"><label
-                  id="username">@adventuringImagineer</label> </span></div>
-          </div>
-          <div class="timeline-Tweet-text">
-            <p id="text">This App will show you 20 individual tweets and the AI will predict if each of the tweets has been
-              retweeted or not.<br>
-              Above this tweet box it will print whether or not the AI predicted correctly.
-              <br> and if the tweet was retweeted or not.
-              <br>Please press "Next Tweet" to begin:)
-            </p>
-            <script>
-              let retweetObj = '{{ retweeted|tojson }}';
-              retweetObj = JSON.parse(retweetObj);
-              let textObj = '{{ text|tojson|safe }}';
-              textObj = textObj.split('", "')
-              let username = '{{screenname|tojson}}'
-              username = JSON.parse(username);
-              let name = '{{name|tojson}}'
-              name = JSON.parse(name);
-              let i = 0
-              $(document).ready(function () {
-                $("#tweet").click(function () {
-                  if (textObj.length != i) {
-                    document.getElementById("text").innerHTML = textObj[i];
-                    document.getElementById("name").innerHTML = name[i];
-                    document.getElementById("username").innerHTML = "@" + username[i];
-                    i++;
-                  } else {
-                    document.getElementById("name").innerHTML = "adventuringImagineer"
-                    document.getElementById("username").innerHTML = "@adventuringImagineer"
-                    document.getElementById("text").innerHTML = "You have reached the end of the line of tweets. Please refresh page to see more."
-                    document.getElementById("prediction-message").innerHTML = "Thank you for visiting!!"
-                  }
-                });
-              });
-            </script>
-          </div>
-
-
-          <div class="timeline-Tweet-metadata"><span class="timeline-Tweet-timestamp">9h</span></div>
-          <div class="player">
-            <div class="row">
-              <button id="tweet" class="btn hand-selected-img hand-container" style="margin-bottom: 4em;">Next
-                Tweet</button>
-            </div>
-
-          </div>
-        </div>
-      </div>
     </div>
-    <!-- partial -->
-
-    <script>
-      try { 
-      $(document).ready(function retweet() {
-        const url = '{{ url }}';
-        let predictionObj = '{{ payload|tojson }}';
-        predictionObj = JSON.parse(predictionObj);
-        let retweetObj = '{{ retweeted|tojson }}';
-        retweetObj = JSON.parse(retweetObj);
-        var retweet_app = new ReTweet({
-          el: "#body",
-          url: url,
-          payload: predictionObj,
-          retweeted: retweetObj,
-          text: textObj,
-          data: {
-            players: [{ name: "human" }, { name: "AI" }],
-            hands: [
-              { index: 0, name: "no_tweet" },
-              { index: 1, name: "maybe_tweet" },
-              { index: 2, name: "re_tweet" },
-            ],
-            ready: false,
-          },
-        });
-      });}
-      catch (err) {
-        alert("The program did not load properly, page will be refreshed automatically. See console log for possible error messages");
-        location.reload()
-        console.log('Error on load: ', err)
-      }
-    </script>
-
-
-    <div class="footer">
+    <div class="ConfusionMatrix">
+      <!-- <div class="cMatrix"> -->
+        <div class="matrices-ARPR">Prediction-Retweet
+          <!-- <div style="transform: rotate(-90deg); transform-origin: left; position: fixed; top: 50;">
+          Actual Retweet
+        </div> -->
+        <label id="cMatrix-arpr">Actual Retweet Prediction Retweet</label></div>
+        <div class="matrices-ARPN">Prediction-No Retweet<label id="cMatrix-arpn">Actual Retweet Prediction No Retweet</label></div>
+        <div class="matrices-ANPR">
+          <!-- <div style="transform: rotate(-90deg); transform-origin: left; position: fixed; bottom: 0;">
+            Actual No Retweet
+          </div> -->
+          <label id="cMatrix-anpr">Actual No Retweet Prediction Retweet</label></div>
+        <div class="matrices-ANPN"><label id="cMatrix-anpn">Actual No Retweet Prediction No Retweet</label></div>
+      <!-- </div> -->
     </div>
+  </div> <!--ends div3 div-->
+</div> <!--Ends div container-->
+<!-- partial -->
+<script>
+  try { 
+  $(document).ready(function retweet() {
+    const url = '{{ url }}';
+    let predictionObj = '{{ payload|tojson }}';
+    predictionObj = JSON.parse(predictionObj);
+    let retweetObj = '{{ retweeted|tojson }}';
+    retweetObj = JSON.parse(retweetObj);
+    var retweet_app = new ReTweet({
+      el: "#body",
+      url: url,
+      payload: predictionObj,
+      retweeted: retweetObj,
+      text: textObj,
+      data: {
+        players: [{ name: "human" }, { name: "AI" }],
+        hands: [
+          { index: 0, name: "not" },
+          { index: 1, name: "retweeted" },
+          // { index: 2, name: "retweeted" },
+        ],
+        ready: false,
+      },
+    });
+  });}
+  catch (err) {
+    alert("The program did not load properly, page will be refreshed automatically. See console log for possible error messages");
+    location.reload()
+    console.log('Error on load: ', err)
+  }
+</script>
+
 
 </body>
-
 </html>
