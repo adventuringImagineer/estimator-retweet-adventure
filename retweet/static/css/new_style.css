@@ -1,0 +1,434 @@
+.container {
+  display: grid; 
+  grid-template-columns: 0.7fr 1.7fr 0.6fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "div1 div1 div1"
+    ". Tweet ."
+    "div3 div3 div3"; 
+}
+
+.Tweet { grid-area: Tweet; }
+
+.div1 {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 0.7fr 1.3fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "Title Title"
+    "Line-Graph Pie-Graph"; 
+  grid-area: div1; 
+}
+.Title { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "."; 
+  grid-area: Title;
+  text-align: center;
+}
+.Line-Graph { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ".";
+  grid-area: Line-Graph; }
+.Pie-Graph { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ".";
+  grid-area: Pie-Graph; }
+
+.div3 {
+  display: grid; 
+  grid-template-columns: 1.4fr 1.3fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "PredictionResults ConfusionMatrix"
+    "PredictionResults ConfusionMatrix"
+    "PredictionResults ConfusionMatrix"; 
+  grid-area: div3; 
+}
+/* .PredictionResults { grid-area: PredictionResults; } */
+.PredictionResults {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "."; 
+  grid-area: PredictionResults; 
+}
+/* .ConfusionMatrix { grid-area: ConfusionMatrix; } */
+.ConfusionMatrix {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "matrices-ARPR matrices-ARPN"
+    "matrices-ANPR matrices-ANPN"; 
+  grid-area: ConfusionMatrix; 
+}
+.matrices-ARPR { grid-area: matrices-ARPR; }
+.matrices-ARPN { grid-area: matrices-ARPN; }
+.matrices-ANPR { grid-area: matrices-ANPR; }
+.matrices-ANPN { grid-area: matrices-ANPN; }
+
+
+/*RPS CSS*/
+h3,
+h2 {
+  padding: 5px;
+}
+html, body /* , .container  */
+{
+  height: 100%;
+  margin: 0;
+}
+.player-title,
+.probability {
+  width: 100%;
+  text-align: center;
+}
+#probabilities {
+  height: 30px;
+}
+#probabilities-row {
+  display: none;
+}
+#prediction-message {
+  /* position: absolute; */
+  /* left: 30px;
+  right:20px; */
+  text-align: center;
+  font-size: 25px;
+  /* margin-top: 5em; 
+  margin-bottom: 2em; 
+  margin-left: 10em;
+  margin-right: 10em; */
+  color: royalblue;
+}
+#cMatrix-arpr {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: end; 
+  align-self: end; 
+  grid-area: matrices-ARPR; 
+  width: 100%; 
+  height: 85%; 
+  color: royalblue;
+}
+#cMatrix-arpn {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: start; 
+  align-self: end; 
+  grid-area: matrices-ARPN; 
+  width: 100%; 
+  height: 85%; 
+  color: royalblue;
+}
+#cMatrix-anpr {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: end; 
+  align-self: start; 
+  grid-area: matrices-ANPR; 
+  width: 100%; 
+  height: 85%; 
+  color: royalblue;
+}
+
+#cMatrix-anpn {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: start; 
+  align-self: start; 
+  grid-area: matrices-ANPN; 
+  width: 100%; 
+  height: 85%;  
+  color: royalblue;
+}
+.choice,
+.hand-container,
+.hand-img,
+.hand-background-img
+,.hand-selected-img 
+{
+  padding: 10px 24px;
+  /* height: 1.5em; */
+  /*width: 150px;*/
+}
+.hand-container {
+  position: relative;
+  margin: auto;
+}
+.hand-background-img,
+.hand-selected-img {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  /* display: none;
+  z-index: 30;
+  left: 0px;
+  top: 0px; */
+}
+#winner {
+  height: 150px;
+}
+#winner.ready {
+  color: gray;
+}
+#info {
+  text-align: center;
+  padding-top: 5vh;
+  color: rgb(16, 71, 71);
+}
+#aiadv {
+  padding-left: 17%;
+}
+#human-player .hand-container.selected > img {
+  top: 30px;
+}
+#AI-player .hand-container.selected > img {
+  top: -30px;
+}
+.hand-container.selected > .hand-selected-img {
+  background-color: #1DA1F2;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  display: inline-block;
+}
+.linegraph {
+  /* padding-top: 1rem;  */
+  /* padding-bottom: 3rem;  */
+  /* width: 50%;  */
+  /* float:left;  */
+  display: none;
+}
+.piegraph {
+  /* padding-top: 1rem;  */
+  /* padding-bottom: 3rem;  */
+  /* width: 50%;  */
+  /* float:right;  */
+  display: none;
+}
+.btn {
+  background-color: #1DA1F2;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-bottom: 4em;
+}
+
+/*Ends RPS CSS*/
+/* For presentation only, no need to copy the code below */
+
+/* .container * {
+  border: 1px solid red;
+  position: relative;
+}
+
+.container *:after {
+  content:attr(class);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+} */
+
+/*Twitter Stuff*/
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu5mxP.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmWUlfABc9.ttf) format('truetype');
+}
+
+.tw-block-parent {
+/*   width: 500px; */
+  font: 14px/1.4 Roboto, Helvetica, Arial, Tahoma, sans-serif;
+  font-weight: 300;
+  color: #292F33;
+}
+.timeline-TweetList-tweet {
+  border-top: 1px solid rgba(15, 70, 100, 0.12);
+}
+.timeline-TweetList-tweet:first-of-type {
+  border-top: none;
+}
+.timeline-Tweet {
+  position: relative;
+  padding: 10px;
+}
+.timeline-Tweet a,
+.timeline-Tweet .link {
+  color: #3b94d9;
+  text-decoration: none;
+  outline: 0;
+}
+.timeline-Tweet a:hover,
+.timeline-Tweet .link:hover {
+  color: #55acee;
+}
+.timeline-Tweet-brand {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.Icon {
+  display: inline-block;
+  width: 1em;
+  height: 1.25em;
+  background-repeat: no-repeat;
+  background-size: contain;
+  vertical-align: text-bottom;
+  opacity: 0.6;
+  transition: opacity 0.2s, background-image 0.2s;
+}
+.Icon--twitter {
+  opacity: 1;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MiA3MiI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGg3MnY3MkgweiIvPjxwYXRoIGNsYXNzPSJpY29uIiBmaWxsPSIjZTFlOGVkIiBkPSJNNjguODEyIDE1LjE0Yy0yLjM0OCAxLjA0LTQuODcgMS43NDQtNy41MiAyLjA2IDIuNzA0LTEuNjIgNC43OC00LjE4NiA1Ljc1Ny03LjI0My0yLjUzIDEuNS01LjMzIDIuNTkyLTguMzE0IDMuMTc2QzU2LjM1IDEwLjU5IDUyLjk0OCA5IDQ5LjE4MiA5Yy03LjIzIDAtMTMuMDkyIDUuODYtMTMuMDkyIDEzLjA5MyAwIDEuMDI2LjExOCAyLjAyLjMzOCAyLjk4QzI1LjU0MyAyNC41MjcgMTUuOSAxOS4zMTggOS40NCAxMS4zOTZjLTEuMTI1IDEuOTM2LTEuNzcgNC4xODQtMS43NyA2LjU4IDAgNC41NDMgMi4zMTIgOC41NTIgNS44MjQgMTAuOS0yLjE0Ni0uMDctNC4xNjUtLjY1OC01LjkzLTEuNjQtLjAwMi4wNTYtLjAwMi4xMS0uMDAyLjE2MyAwIDYuMzQ1IDQuNTEzIDExLjYzOCAxMC41MDQgMTIuODQtMS4xLjI5OC0yLjI1Ni40NTctMy40NS40NTctLjg0NSAwLTEuNjY2LS4wNzgtMi40NjQtLjIzIDEuNjY3IDUuMiA2LjUgOC45ODUgMTIuMjMgOS4wOS00LjQ4MiAzLjUxLTEwLjEzIDUuNjA1LTE2LjI2IDUuNjA1LTEuMDU1IDAtMi4wOTYtLjA2LTMuMTIyLS4xODQgNS43OTQgMy43MTcgMTIuNjc2IDUuODgyIDIwLjA2NyA1Ljg4MiAyNC4wODMgMCAzNy4yNS0xOS45NSAzNy4yNS0zNy4yNSAwLS41NjUtLjAxMy0xLjEzMy0uMDM4LTEuNjkzIDIuNTU4LTEuODQ3IDQuNzc4LTQuMTUgNi41MzItNi43NzR6Ii8+PC9zdmc+');
+}
+
+
+
+
+
+
+.TweetAuthor {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+.TweetAuthor-link {
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: inherit;
+}
+.TweetAuthor-avatar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.TweetAuthor-name {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+}
+.TweetAuthor-screenName {
+  margin-left: 5px;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 300;
+  color: #8899A6;
+}
+
+.Icon--verified {
+  opacity: 1;
+  cursor: default;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA3MiI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGg2NHY3MkgweiIvPjxwYXRoIGZpbGw9IiM4OGM5ZjkiIGQ9Ik0zIDM3LjMxNWMwIDQuMTI1IDIuMTYyIDcuNzI2IDUuMzYzIDkuNjI0LS4wNTYuNDY3LS4wOS45MzctLjA5IDEuNDIgMCA2LjEwMyA0LjcyIDExLjA0NSAxMC41NDYgMTEuMDQ1IDEuMjk1IDAgMi41NDItLjIzNCAzLjY4Ny0uNjg2QzI0LjIyIDYyLjQgMjcuODI3IDY0LjkzIDMyIDY0LjkzYzQuMTc0IDAgNy43ODItMi41MyA5LjQ5LTYuMjEzIDEuMTQ4LjQ1IDIuMzkuNjg1IDMuNjkuNjg1IDUuODI2IDAgMTAuNTQ2LTQuOTQgMTAuNTQ2LTExLjA0NSAwLS40ODMtLjAzNy0uOTUzLS4wOTMtMS40MkM1OC44MyA0NS4wNCA2MSA0MS40NCA2MSAzNy4zMTRjMC00LjM3LTIuNDItOC4xNS01LjkzMy05Ljk0Ni40MjctMS4yMDMuNjU4LTIuNS42NTgtMy44NjUgMC02LjEwNC00LjcyLTExLjA0NS0xMC41NDUtMTEuMDQ1LTEuMzAyIDAtMi41NDMuMjMyLTMuNjkuNjg4LTEuNzA3LTMuNjg1LTUuMzE1LTYuMjE2LTkuNDktNi4yMTYtNC4xNzMgMC03Ljc3OCAyLjUzLTkuNDkyIDYuMjE2LTEuMTQ2LS40NTUtMi4zOTMtLjY4OC0zLjY4OC0uNjg4LTUuODI3IDAtMTAuNTQ1IDQuOTQtMTAuNTQ1IDExLjA0NSAwIDEuMzY0LjIzIDIuNjYyLjY1NiAzLjg2NEM1LjQyIDI5LjE2MyAzIDMyLjk0NCAzIDM3LjMxNHoiLz48cGF0aCBmaWxsPSIjRkZGIiBkPSJNMTcuODcgMzkuMDhsNy4wMTUgNi45NzhjLjU4NS41ODIgMS4zNS44NzMgMi4xMTYuODczLjc3IDAgMS41NDItLjI5NCAyLjEyNy0uODgzLjM0NC0uMzQ2IDE1Ljk4LTE1Ljk3NCAxNS45OC0xNS45NzQgMS4xNzItMS4xNzIgMS4xNzItMy4wNyAwLTQuMjQzLTEuMTctMS4xNy0zLjA3LTEuMTcyLTQuMjQyIDBsLTEzLjg3IDEzLjg2My00Ljg5Mi00Ljg2OGMtMS4xNzQtMS4xNjgtMy4wNzQtMS4xNjQtNC4yNDIuMDEtMS4xNjggMS4xNzYtMS4xNjMgMy4wNzUuMDEgNC4yNDR6Ii8+PC9zdmc+');
+}
+
+.timeline-Tweet-text {
+  margin-left: 40px;
+  margin-bottom: 12px;
+  word-wrap: break-word;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 300;
+}
+.timeline-Tweet-metadata {
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+}
+.timeline-Tweet-timestamp {
+  font-size: 12px;
+  line-height: 18px;
+  color: #e1e8ed;
+  transition: color 0.2s;
+}
+.timeline-Tweet-author {
+  position: relative;
+  margin-bottom: 2px;
+  padding-left: 40px;
+}
+.timeline-Tweet-actions {
+  margin: 0 0 0 40px;
+  padding: 0;
+  list-style: none;
+  border: none;
+}
+.timeline-Tweet-action {
+  display: inline-block;
+  font-size: 17px;
+}
+.timeline-Tweet-action + .timeline-Tweet-action {
+  margin-left: 20px;
+}
+.Avatar {
+  width: 32px;
+  height: 32px;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFwklEQVRoBdXB3YvcZx3G4c/9/GZ2dnY3u923JoGmaUJSa2itGFvBNMWCoD1SoSKiB4pnpQqCB/4LgnhQRE8EeyCI6JmCQqkatQ2ktrFIjU0JSRuzcZNsk31zJjPz+94+s2GN1N2d2W0szHXJGQNMzhhgcsYAkzMGmJwxwOSMASZnDDA5Y4DJGQNMzhhgcsb7yDbrJPFeyRnvA9uEQQIhjLEhCSTRZZt1kuiHnLENtumShAGxOQMCbANC4n/YZKbLQJLoMiB6kzN2wDaS6MU2kijDnL60yrmFJo1WUK8m7puqcfSeUSpFYt1io029WjBUSdhGEluRM3qwyYwkLl5v0gk4MD1MJ4JCQhIbCZskcW21zU9fucbr8w2aHVNIlDa1QhzZU+eph6folOb5s4tM1As+//A0YdYkia3IGT3YZt1zL1/lwsJNnjm+h9mxKmUESUIS/y0ikESjHfzgxXn+9s8GY7WCJDAgoDS0ymC4kmiXwT0TNb766Ay7ahVGa4lbhMSm5Iwe7EBKlBF893eXeeNqk/2TNb50dJpDM3VsY4PEfxhIEi+cvcFPXllgvFYQgAFxm4AyTLUQH903SiF45N4xDs3WiQikhMSm5Iwe7EBKdMJ854VLzC21KcOMVAs+/cAETxwep1okuiJM2KQkIsz3fn+Z89dvUpFA4t1MZlMIGu3gMw9O8uSRSboESGIrckYPEUZizY9PXeXkW8uMVAvapSnDHJiq8cn7xzk0W+eueoV1Eebbv3qLlZZJSYiN2QbMFz8yw7ED49imSxI2SGxKzujBBjtIKfHXuVWe/eM8taoQoqtdBmXAvZNVPjBbZ99kjd1jVUaGEs/+4TLXGyWVIrERAe0ymB6t8q1P7GWiXhA2RUr0Q87oyYRZU4b5xWsLnDi3zFAhjOiSoN0xzU4wXBG7agW1amK5WdIJI4kNGTo2d48VfOP4XqZGKhhIEv2QM3qwA0m0Oua5U1eYGa1yem6VaysllUKAASFAgjCUYWwoEkhiMwKaneDwbI2nP76H0VqBbSTRDzmjhwgjCTA/fHGeU2+vMlZLSGIrAgwYEBtLguVmyWMHd/GVR2aRwDYpJfohZ/Rgg21SEq/NrfD9P80zUikwEAaJHTFQCJZvdvjCh6f51AOTlBEkCUn0Q87oydisCeBnpxf4zd9vMDZUUCRhg8SOlBGMVBNPH9vNwZk6ESYl0S85o09hI6Bdmt++uciJc8ssNkuKJHZCQLNdcmR3na8/vhcBkpES/ZIz+mSbrjLMy2+vcGa+yZkrDVZbQZHEdthGQGn42sdmOLpvFxGBJCTRLzmjT7axQYKf/+Uaz59dYnSooBNGEv0ykIBGO3hob51nHtuNJLoksR1yxjZEGAmaneBHJ6/w6qVVRqoFCJJELzYkQSeC4Wrim4/vYd/kMBGBUkJsj5yxDTbYQUqi0Q5+feYGL51fIWzawZZskMCGMoIvH53m2MEJyjBJIIntkjP6ZBtziw2FAIlGq+SXr1/nxLklUkpsxEACyjCdMJ99cJInj0xSRpAkJGFAbI+csUPh4Mx8k1cvrvDni6t0DEni3cQtzU4wXEl87qFJnjg8gW26JLFTcsYWbNMlwZtXm1y60WK1VfJOo2R+qc3ccpulZkm9KoRYJ7GmDNMqjQT7J2s89aEp7r+7ToSRQBLvhZyxBdusu9kJXrqwwskLy/xjscVio6ReTdQqiXUGwlCGKcOMDxfsGavw6P4xjh/cxVClIMJIIAnbSGKn5Iw+2CAZEJ0yeONKk/PvNJlbbLHQKGm0gjJMkcToUOKuesHe8SHum6rxwd3DVIsCMBEgCYk7Qs7YhrARIImuMsy/WkGrDMKQBENFYmQoUSSxxiYASYg7S87og01mJGGbMGuKJDZThulKAknYBoTEHSNn7JBt1pnbxG2S+H+SMwaYnDHA5IwBJmcMMDljgMkZA0zOGGByxgCTMwaYnDHA/g38F0yewshmHwAAAABJRU5ErkJggiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIA==');
+  background-size: 32px;
+}
+.timeline-Tweet:hover {
+  background-color: rgba(160, 200, 220, 0.12);
+}
+.timeline-Tweet:hover .timeline-Tweet-brand .Icon {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MiA3MiI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGg3MnY3MkgweiIvPjxwYXRoIGNsYXNzPSJpY29uIiBmaWxsPSIjNTVhY2VlIiBkPSJNNjguODEyIDE1LjE0Yy0yLjM0OCAxLjA0LTQuODcgMS43NDQtNy41MiAyLjA2IDIuNzA0LTEuNjIgNC43OC00LjE4NiA1Ljc1Ny03LjI0My0yLjUzIDEuNS01LjMzIDIuNTkyLTguMzE0IDMuMTc2QzU2LjM1IDEwLjU5IDUyLjk0OCA5IDQ5LjE4MiA5Yy03LjIzIDAtMTMuMDkyIDUuODYtMTMuMDkyIDEzLjA5MyAwIDEuMDI2LjExOCAyLjAyLjMzOCAyLjk4QzI1LjU0MyAyNC41MjcgMTUuOSAxOS4zMTggOS40NCAxMS4zOTZjLTEuMTI1IDEuOTM2LTEuNzcgNC4xODQtMS43NyA2LjU4IDAgNC41NDMgMi4zMTIgOC41NTIgNS44MjQgMTAuOS0yLjE0Ni0uMDctNC4xNjUtLjY1OC01LjkzLTEuNjQtLjAwMi4wNTYtLjAwMi4xMS0uMDAyLjE2MyAwIDYuMzQ1IDQuNTEzIDExLjYzOCAxMC41MDQgMTIuODQtMS4xLjI5OC0yLjI1Ni40NTctMy40NS40NTctLjg0NSAwLTEuNjY2LS4wNzgtMi40NjQtLjIzIDEuNjY3IDUuMiA2LjUgOC45ODUgMTIuMjMgOS4wOS00LjQ4MiAzLjUxLTEwLjEzIDUuNjA1LTE2LjI2IDUuNjA1LTEuMDU1IDAtMi4wOTYtLjA2LTMuMTIyLS4xODQgNS43OTQgMy43MTcgMTIuNjc2IDUuODgyIDIwLjA2NyA1Ljg4MiAyNC4wODMgMCAzNy4yNS0xOS45NSAzNy4yNS0zNy4yNSAwLS41NjUtLjAxMy0xLjEzMy0uMDM4LTEuNjkzIDIuNTU4LTEuODQ3IDQuNzc4LTQuMTUgNi41MzItNi43NzR6Ii8+PC9zdmc+');
+}
+.timeline-Tweet:hover .timeline-Tweet-action .Icon {
+  opacity: 1;
+}
+.timeline-Tweet:hover .timeline-Tweet-timestamp {
+  color: #667580;
+}
