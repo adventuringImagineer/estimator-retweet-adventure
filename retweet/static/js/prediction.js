@@ -32,7 +32,7 @@ class Prediction extends Estimator {
     this.DEPTH = depth;
     this.PROB = prob;
     this.MIN_VALUE = 0;   // Min/max value provided/predicted.
-    this.MAX_VALUE = 2;
+    this.MAX_VALUE = 1;
     // History of past DEPTH values.
     // [0] is earliest.
     this.history = [];
@@ -58,9 +58,9 @@ class Prediction extends Estimator {
       let vars = [];
       this.history.forEach(function(val) {
         let mapped_val =
-           val == 0 ? 85 :
-           val == 1 ? 170 :
-           val == 2 ? 255 :
+           val == 0 ? 128 :
+           val == 1 ? 194 :
+          //  val == 2 ? 194 :
                 console.log(`History value ${val} is out of range.`);
         vars.push(mapped_val);
       });

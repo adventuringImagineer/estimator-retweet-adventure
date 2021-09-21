@@ -17,7 +17,10 @@ class ReTweet extends Vue {
     let payload = arg.payload;
     let retweeted = arg.retweeted;
     let url = arg.url
-
+    this.arpr_index = 0;
+    this.anpr_index = 0;
+    this.arpn_index = 0;
+    this.anpn_index = 0;
     // The depth of the human play history used to make predictions (# X variables for predictor).
     this.HISTORY_DEPTH = 4;
     // History of plays made by AI, for all of time. (Human history is this.premonition.history.)
@@ -46,15 +49,15 @@ class ReTweet extends Vue {
     };
     // if (ai_index == 0){
       this.winner_message = {
-        retweeted: "AI did not predict correctly",
-        ai: "AI predicted correctly!",
+        retweeted: "Incorrect",
+        ai: "Correct",
         // tie: "Tie",
       };
       this.prediction_message = {
-        ai_yes: "Correct: AI predicted this would be retweeted and it was retweeted!",
-        ai_no: "Correct: AI predicted this would not be retweeted and it was not retweeted!",
-        retweet_yes: "Incorrect: AI predicted this would not be retweeted & it was retweeted",
-        retweet_no: "Incorrect: AI predicted this would be retweeted & it was not retweeted",
+        ai_yes: "Prediction: Retweet \r\nActual: Retweet",
+        ai_no: "Prediction: No Retweet \r\nActual: No Retweet",
+        retweet_yes: "Prediction: No Retweet \r\nActual: Retweet",
+        retweet_no: "Prediction: Retweet \r\nActual: No Retweet",
         error: "Error: No Prediction Results to give.",
       };
 
@@ -200,7 +203,8 @@ class ReTweet extends Vue {
 
       $("#tweet").click(function (evt) {
         if (retweet.ready) {
-          let val = payload.shift()
+          // let val = payload.shift();
+          let val = retweeted.shift();
           try {
             retweet.determineWinner(parseInt(val));
           $(`#Human-player .hand-container[data-hand-index=${val}]`);
@@ -236,7 +240,7 @@ class ReTweet extends Vue {
 
   // Return a random hand index.
   randomHandIndex() {
-    return Math.floor(Math.random() * 3);
+    return Math.floor(Math.random() * 2);
   }
 
   // Determine winning play against opponent's play.
@@ -265,7 +269,7 @@ class ReTweet extends Vue {
     }
   // The human has played. Conduct the contest.
   determineWinner(retweeted_index) {
-    var rand = Math.floor(Math.random() * 3);	
+    var rand = Math.floor(Math.random() * 2);	
     if (this.clicks == 4) {	
       document.getElementById("info").style.display = "none";	
     } else {	
@@ -283,6 +287,9 @@ class ReTweet extends Vue {
     }
 
     let ai_index = this.ai_history[this.ai_history.length - 1];
+
+    console.log('confusion matrix: ', this.confusionMatrix(ai_index, retweeted_index));
+    //winner
     let winner = this.winner(retweeted_index, ai_index);
     let prediction_res = this.prediction_result(ai_index, retweeted_index);
     if (this.clicks >= 4) {
@@ -481,9 +488,9 @@ class ReTweet extends Vue {
   // Make the given prediction.
   _manufacturedPrediction(index) {
     return [
-      { est: index, num: 1, denom: 3 },
-      { est: (index + 1) % 3, num: 1, denom: 3 },
-      { est: (index + 2) % 3, num: 1, denom: 3 },
+      { est: index, num: 1, denom: 2 },
+      { est: (index + 1) % 2, num: 1, denom: 2 },
+      // { est: (index + 2) % 3, num: 1, denom: 3 },
     ];
   }
 
@@ -499,4 +506,43 @@ class ReTweet extends Vue {
       );
     }
   }
+
+  /**confusion matrix implementation from https://bci.js.org/docs/metrics_confusionMatrix.js.html */
+  confusionMatrix(predictedClasses, actualClasses) {
+    predictedClasses = [predictedClasses] 
+    actualClasses = [actualClasses]
+    if (predictedClasses.length > actualClasses.length) {
+      return console.log('predictedClasses length must equal ActualClasses length.');
+    }
+
+    let largestClass = Math.max(...predictedClasses.concat(actualClasses));
+
+    //file a 2D
+    let cMatrix = Array(largestClass+1).fill().map(() => Array(largestClass+1).fill(0));
+
+    for(let i = 0; i < predictedClasses.length; i++) {
+      let predicted = predictedClasses[i];
+      let actual = actualClasses[i];
+      cMatrix[actual][predicted]++;
+    }
+
+  if (cMatrix[0] == 1) {
+    this.anpn_index++;
+  } else if (cMatrix[1][1] == 1) {
+    this.arpr_index++;
+  } else if (cMatrix[1][0] == 1) {
+    this.arpn_index++;
+  } else if (cMatrix[0][1] == 1) {
+    this.anpr_index++;
+  }
+    $("#cMatrix-arpr").text(this.arpr_index);
+    $("#cMatrix-anpr").text(this.anpr_index);
+    $("#cMatrix-arpn").text(this.arpn_index);
+    $("#cMatrix-anpn").text(this.anpn_index);
+
+    return cMatrix;
+  }
+
+
+
 }
