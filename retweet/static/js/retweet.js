@@ -306,7 +306,7 @@ class ReTweet extends Vue {
 	}
 	// The human has played. Conduct the contest.
 	determineWinner(payload_array, retweeted_index) {
-		var rand = Math.floor(Math.random() * 2);
+		var rand = Math.floor(Math.random() * 3);
 		if (this.clicks == 4) {
 			document.getElementById("info").style.display = "none";
 		} else {
@@ -486,7 +486,7 @@ class ReTweet extends Vue {
 	}
 
 	predictionCB(preds, info) {
-		let pred_index = preds[0].est;
+		let pred_index = (preds[1].est == 64 ? 0 : preds[1].est == 0 ? 0 : preds[1].est == 128 ? 1 : preds[1].est == 1 ? 1 : 2);
 		var ai_play_index = pred_index;
 		this.ai_history.push(ai_play_index);
 		// Ready to play, but introduce a minimum delay while the DOM conveys the result of the previous battle.
