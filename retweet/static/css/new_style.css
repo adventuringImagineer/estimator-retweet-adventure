@@ -51,6 +51,7 @@
 .div3 {
   display: grid; 
   grid-template-columns: 1.4fr 1.3fr; 
+  /* grid-template-columns: 1.1fr 1.6fr; */
   grid-template-rows: 1fr 1fr 1fr; 
   gap: 0px 0px; 
   grid-template-areas: 
@@ -72,19 +73,24 @@
 /* .ConfusionMatrix { grid-area: ConfusionMatrix; } */
 .ConfusionMatrix {
   display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  grid-template-rows: 1fr 1fr; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr; 
   gap: 0px 0px; 
   grid-template-areas: 
-    "matrices-ARPR matrices-ARPN"
-    "matrices-ANPR matrices-ANPN"; 
+    "AHPH AHPL AHPN"
+    "ALPH ALPL ALPN"
+    "ANPH ANPL ANPN"; 
   grid-area: ConfusionMatrix; 
 }
-.matrices-ARPR { grid-area: matrices-ARPR; }
-.matrices-ARPN { grid-area: matrices-ARPN; }
-.matrices-ANPR { grid-area: matrices-ANPR; }
-.matrices-ANPN { grid-area: matrices-ANPN; }
-
+.ALPL { grid-area: ALPL; }
+.ANPN { grid-area: ANPN; }
+.ALPH { grid-area: ALPH; }
+.AHPH { grid-area: AHPH; }
+.AHPL { grid-area: AHPL; }
+.ANPH { grid-area: ANPH; }
+.ANPL { grid-area: ANPL; }
+.AHPN { grid-area: AHPN; }
+.ALPN { grid-area: ALPN; }
 
 /*RPS CSS*/
 h3,
@@ -119,40 +125,117 @@ html, body /* , .container  */
   margin-right: 10em; */
   color: royalblue;
 }
-#cMatrix-arpr {
+#actual-message {
+  /* position: absolute; */
+  /* left: 30px;
+  right:20px; */
+  text-align: center;
+  font-size: 25px;
+  /* margin-top: 5em; 
+  margin-bottom: 2em; 
+  margin-left: 10em;
+  margin-right: 10em; */
+  color: royalblue;
+}
+#cMatrix-ahph {
   border: 3px solid royalblue;
   text-align: center;
   /* text-justify: center; */
   font-size: 25px;
   justify-self: end; 
   align-self: end; 
-  grid-area: matrices-ARPR; 
+  grid-area: matrices-AHPH; 
   width: 100%; 
   height: 85%; 
   color: royalblue;
 }
-#cMatrix-arpn {
+#cMatrix-ahpl {
   border: 3px solid royalblue;
   text-align: center;
   /* text-justify: center; */
   font-size: 25px;
   justify-self: start; 
   align-self: end; 
-  grid-area: matrices-ARPN; 
+  grid-area: matrices-AHPL; 
   width: 100%; 
   height: 85%; 
   color: royalblue;
 }
-#cMatrix-anpr {
+#cMatrix-ahpn {
   border: 3px solid royalblue;
   text-align: center;
   /* text-justify: center; */
   font-size: 25px;
   justify-self: end; 
   align-self: start; 
-  grid-area: matrices-ANPR; 
+  grid-area: matrices-AHPN; 
   width: 100%; 
   height: 85%; 
+  color: royalblue;
+}
+
+#cMatrix-alph {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: start; 
+  align-self: start; 
+  grid-area: matrices-ALPH; 
+  width: 100%; 
+  height: 85%;  
+  color: royalblue;
+}
+
+#cMatrix-alpl {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: start; 
+  align-self: start; 
+  grid-area: matrices-ALPL; 
+  width: 100%; 
+  height: 85%;  
+  color: royalblue;
+}
+
+#cMatrix-alpn {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: start; 
+  align-self: start; 
+  grid-area: matrices-ALPN; 
+  width: 100%; 
+  height: 85%;  
+  color: royalblue;
+}
+
+#cMatrix-anph {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: start; 
+  align-self: start; 
+  grid-area: matrices-ANPH; 
+  width: 100%; 
+  height: 85%;  
+  color: royalblue;
+}
+
+#cMatrix-anpl {
+  border: 3px solid royalblue;
+  text-align: center;
+  /* text-justify: center; */
+  font-size: 25px;
+  justify-self: start; 
+  align-self: start; 
+  grid-area: matrices-ANPL; 
+  width: 100%; 
+  height: 85%;  
   color: royalblue;
 }
 
@@ -168,6 +251,7 @@ html, body /* , .container  */
   height: 85%;  
   color: royalblue;
 }
+
 .choice,
 .hand-container,
 .hand-img,

@@ -8,16 +8,18 @@ from retweet import create_app
 app = create_app()
 
 # Creating the API object while passing in auth information
-auth = tweepy.OAuthHandler(config.tweepy_consumer_key, config.tweepy_consumer_secret)
+auth = tweepy.OAuthHandler(config.tweepy_consumer_key,
+                           config.tweepy_consumer_secret)
 
 # # Setting your access token and secret
-auth.set_access_token(config.tweepy_access_token, config.tweepy_access_token_secret)
+auth.set_access_token(config.tweepy_access_token,
+                      config.tweepy_access_token_secret)
 
 api = tweepy.API(auth, wait_on_rate_limit=True)
 # status = api.get_status(tweet_mode="extended")
 
 # the max number of tweets to retrieve from the Twitter API
-MAX_TWEETS = 20
+MAX_TWEETS = 40
 # the keyword(s) to search for tweets,
 # can use "OR" to find tweets that have any of the keywords
 # or "AND" to find only tweets that reference all keywords
@@ -56,7 +58,6 @@ def get_user_info(searched_tweets):
         print('could not get twitter user data')
     return user_info
 
-
 ##
 # This function will extract the original tweeters information from the nested
 # twitter data
@@ -64,6 +65,8 @@ def get_user_info(searched_tweets):
 # @param: searched_tweets: the dict of nested tweet information
 # @return: the original tweeters user information
 ##
+
+
 def get_tweet_info(searched_tweets):
     tweet_info = ""
     full_text = []
@@ -97,10 +100,12 @@ def get_tweet_info(searched_tweets):
 
 def quantify_data(data):
     data = ((data - 0) / (MAX_FOLLOWER_COUNT - 0) * (255 - 0) + 0)
-    if (data <= 128):
+    if (data <= 64):
         data = 0
-    else:
+    elif (data > 64 and data <= 128):
         data = 1
+    else:
+        data = 2
     return data
 
 ##
@@ -116,14 +121,15 @@ def quantify_data(data):
 def normalized_user_data(user):
     user_data = []
     for i in user:
-        # est3 = quantify_data(255 if i['verified'] else 0)
-        # est2 = quantify_data(255 if (i['friends_count'] < i['followers_count']) else 0)
-        # est1 = quantify_data(i['followers_count'])
-        # print('followers_count: ', i['followers_count'], ': friends_count: ', i['friends_count'], ': verified:', i['verified'])
-        est = ((quantify_data(i['followers_count']) + (255 if (i['friends_count']
-               < i['followers_count']) else 0) + (255 if i['verified'] else 0))/3)
-        user_data.append(1 if est > 128 else 0)
-        # user_data.append([est1, est2, est3])
+        est1 = quantify_data(i['followers_count'])
+        est2 = (2 if i['verified'] else 0)
+        if ((i['friends_count'] < i['followers_count']) and ((i['followers_count'] - i['friends_count']) >= 1000)):
+            est3 = 2
+        elif ((i['friends_count'] < i['followers_count']) and ((i['followers_count'] - i['friends_count']) < 1000)):
+            est3 = 1
+        else:
+            est3 = 0
+        user_data.append([est1, est2, est3])
 
     return user_data
 
@@ -144,11 +150,15 @@ def test():
         screennames.append(screenname.decode())
 
     for i in searched_tweets:
-        retweeted.append(1 if i['retweet_count'] > 0 else 0)
+        if (i['retweet_count'] > 10):
+            retweeted.append(2)
+        elif (i['retweet_count'] > 0 and i['retweet_count'] <= 10):
+            retweeted.append(1)
+        else:
+            retweeted.append(0)
 
     return render_template('retweet.html', payload=payload, retweeted=retweeted, text=text, screenname=screennames, name=names, url=config.estimator_url)
 
 
 if __name__ == '__main__':
-    # app.run(port=5000)
     app.run(host='0.0.0.0', port=80)
